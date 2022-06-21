@@ -19,8 +19,12 @@ import Spinner from "./Spinner";
 import Button from "./Button";
 
 const Home = () => {
-    const { state, loading, error, setSearchTerm, searchTerm } = useHomeFetch()
+    const { state, loading, error, setSearchTerm, searchTerm, setIsLoadingMore } = useHomeFetch()
     // console.log(state);
+
+    if (error) {
+        return <div>Something went wrong</div>
+    }
 
 
 
@@ -47,7 +51,7 @@ const Home = () => {
     </Grid>
     {loading && <Spinner />}
     {state.page < state.total_pages && !loading && (
-    <Button text="Load More"  />)}
+    <Button text="Load More" callback={() => setIsLoadingMore(true)} />)}
      </>
      )
         

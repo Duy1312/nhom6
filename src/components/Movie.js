@@ -11,15 +11,19 @@ import Spinner from "./Spinner";
 
 import { useMovieFetch } from "../hooks/useMovieFetch";
 
+import BreadCrumb from "./BreadCrumb";
+
 import NoImage from "../images/no_image.jpg"
 
 const Movie = () => {
     const{ movieId }= useParams();
     const { state: movie, loading, error } = useMovieFetch(movieId)
-    console.log(movie);
+
+    if (loading) return <Spinner />
+    if(error) return<div>Somthing wrong</div>
     return(
         <>
-            <div>Movie</div>
+            <BreadCrumb movieTitle={movie.original_title} />
         </>
     )
 }

@@ -13,6 +13,7 @@ import { useMovieFetch } from "../hooks/useMovieFetch";
 
 import BreadCrumb from "./BreadCrumb";
 
+import MovieInfo from './MovieInfo'
 import NoImage from "../images/no_image.jpg"
 
 const Movie = () => {
@@ -24,6 +25,7 @@ const Movie = () => {
     return(
         <>
             <BreadCrumb movieTitle={movie.original_title} />
+            <MovieInfo movie={movie} />
         </>
     )
 }
